@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+ import { useState } from 'react';
+ import * as C from './App.styles';
+//import { Container } from "./App.styles";
+import { Item } from './types/Item'; 
 
-function App() {
+const App = () => {
+
+  const [list, setList] = useState<Item[]>([
+    { id : 1, name: 'comprar pão', done: false},
+    { id : 2, name: 'comprar leite', done: false}
+  ])
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <C.Container>
+          <C.Area>
+            <C.Header>Lista de Tarefas</C.Header>
+
+          {/* Área de adicionar nova tarefa */}
+
+
+          {/* Lista de tarefas*/}
+          {list.map((item, index) => (
+            <div>
+                {item.name}
+            </div>
+          ))}
+
+          </C.Area>
+      </C.Container>
+    );
 }
 
 export default App;
